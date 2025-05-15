@@ -786,7 +786,34 @@
                 <h3>Email me</h3>
                 <p>romaric.berger@gmail.com</p>
               </div>
-            </div><!-- End Info Item -->
+            </div>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="450">
+              <i class="fab fa-weixin flex-shrink-0"></i>
+              <div>
+                <h3>WeChat</h3>
+                <p>RB1209-1990</p>
+                <!-- Add a modal trigger -->
+                <a href="#" data-bs-toggle="modal" data-bs-target="#wechatModal" style="font-size: 0.9rem;">QR CODE</a>
+              </div>
+            </div>
+
+            <!-- Modal for QR Code -->
+            <div class="modal fade" id="wechatModal" tabindex="-1" aria-labelledby="wechatModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content text-center">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="wechatModalLabel">Scan me to add my Wechat!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                  </div>
+                  <div class="modal-body">
+                    <img src="assets/img/my_qr_code.jpg" alt="QR Code WeChat" class="img-fluid rounded" style="max-height: 150px;">
+                  </div>
+                </div>
+              </div>
+            </div>
+
 
           </div>
 <!--

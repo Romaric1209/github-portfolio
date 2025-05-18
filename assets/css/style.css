@@ -1,0 +1,5 @@
+.fixed-size {
+    width: 350px;
+    height: 250px;
+    object-fit: contain;
+  }

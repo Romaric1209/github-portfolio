@@ -3,3 +3,10 @@
     height: 250px;
     object-fit: contain;
   }
+
+.dataset {
+    background-color: #f9f9f9;
+    border-left: 4px solid #0078d4;
+    margin: 10px 0;
+    padding: 10px;
+  }

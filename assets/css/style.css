@@ -10,3 +10,29 @@
     margin: 10px 0;
     padding: 10px;
   }
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  
+.image-gallery a {
+    flex: 0 0 auto;
+    width: 150px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+  
+.image-gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+.image-gallery a:hover {
+    transform: scale(1.05);
+  }

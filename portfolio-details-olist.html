@@ -78,6 +78,7 @@
         <div class="row justify-content-between gy-4 mt-4">
 
           <div class="col-lg-8" data-aos="fade-up">
+            <section>
             <div class="portfolio-description">
               <p>
                 The Olist challenge involves analyzing datasets provided by Olist, a Brazilian e-commerce company. The goal is to use data analysis and machine learning techniques to derive insights and suggest improvements or strategies for the business.
@@ -132,104 +133,164 @@
                   <h5>olist_geolocation_dataset</h5>
                   <p>This dataset provides geolocation information, including latitude and longitude for different zip code prefixes.</p>
               </div>
+              </section>
+              <section>
               <h2>EDA_ Exploratory Data Analysis</h2>
               <p>
                 Exploratory Data Analysis (EDA) is a crucial step in the data analysis process that involves examining and understanding the data you have before applying more formal modeling or hypothesis testing techniques. The primary goal of EDA is to uncover patterns, spot anomalies, test hypotheses, and check assumptions with the help of summary statistics and graphical representations.
               </p>
               <a href="assets/pdf/Exploratory_Data_Analysis.pdf" download>Download EDA</a>
+              </section> 
+              <section>
+              <h2>Olist_Data Analysis Income, Costs and ARIMA forecast</h2>
 
+              <h5>1. Problem Statement</h5>
+              <p><strong>Goal:</strong> How can Olist improve its profitability?</p>
+              <ul>
+                <li>Revenue: Sales fee (10%) + Seller subscription (80 BRL/month)</li>
+                <li>Costs:
+                  <ul>
+                    <li>IT Costs: Scale with √sellers and √items sold</li>
+                    <li>Reputation Costs: Penalized by review scores ≤ 3</li>
+                  </ul>
+                </li>
+              </ul>
 
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <div>
-                  <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                  <h3>Sara Wilsson</h3>
-                  <h4>Designer</h4>
-                </div>
-              </div>
+              <h5>2. Financial Assessment</h5>
+              <ul>
+                <li><strong>Total Revenue:</strong> BRL 2,860,303.66</li>
+                <li><strong>IT Costs:</strong> BRL 491,494.47</li>
+                <li><strong>Reputation Costs:</strong> BRL 2,053,340.00</li>
+                <li><strong>Profit:</strong> BRL 315,469.19</li>
+              </ul>
 
+              <h5>3. Hypothesis: Removing Bad Sellers</h5>
+              <p>What if we only keep sellers with average review score > 3?</p>
+              <ul>
+                <li><strong>Good Sellers:</strong> 2,645 out of 3,095</li>
+                <li><strong>New Revenue:</strong> BRL 2,735,287.43</li>
+                <li><strong>IT Cost (smaller):</strong> BRL 478,223.96</li>
+                <li><strong>Reputation Cost:</strong> 0</li>
+                <li><strong>New Profit:</strong> BRL 2,257,063.47</li>
+              </ul>
+
+              <h5>4. Observations</h5>
+              <ul>
+                <li>Most review costs come from 1- and 2-star reviews</li>
+                <li>Reputation cost is ~72% of revenue — huge impact</li>
+                <li>Profit drastically improves when bad sellers are excluded</li>
+              </ul>
+
+              <h5>5. Sales Forecast with ARIMA</h5>
+              <p>Used ARIMA and SARIMA to predict daily sales revenue.</p>
+              <ul>
+                <li>Data: Jan 2017 to Aug 2018</li>
+                <li><strong>Model Accuracy:</strong> ~90%</li>
+                <li><strong>ARIMA MAPE:</strong> 10.14%</li>
+                <li><strong>Forecast Error:</strong> ~1.67%</li>
+              </ul>
+
+              <h5>6. Forecast with SARIMA</h5>
+              <ul>
+                <li>SARIMA (0,1,1)x(1,0,1,7)</li>
+                <li><strong>MAPE:</strong> 10.06%</li>
+                <li><strong>Forecast Error:</strong> ~5.06%</li>
+              </ul>
+
+              <h5>7. Conclusion</h5>
               <p>
-                Impedit ipsum quae et aliquid doloribus et voluptatem quasi. Perspiciatis occaecati earum et magnam animi. Quibusdam non qui ea vitae suscipit vitae sunt. Repudiandae incidunt cumque minus deserunt assumenda tempore. Delectus voluptas necessitatibus est.
+                Removing underperforming sellers dramatically increases profitability by eliminating reputation costs. ARIMA and SARIMA models both provide reliable 14-day forecasts to support operational planning.
               </p>
 
-              <p>
-                Sunt voluptatum sapiente facilis quo odio aut ipsum repellat debitis. Molestiae et autem libero. Explicabo et quod necessitatibus similique quis dolor eum. Numquam eaque praesentium rem et qui nesciunt.
-              </p>
+              <a href="assets/pdf/Exploratory_Data_Analysis.pdf" download>Download Notebook</a>
+              </section> 
 
-            </div>
-          </div>
-          <div class="portfolio-details-slider swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "navigation": {
-                "nextEl": ".swiper-button-next",
-                "prevEl": ".swiper-button-prev"
-              },
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              }
-            }
-          </script>
-          <div class="swiper-wrapper align-items-center">
-
-            <div class="swiper-slide">
-              <img src="assets/img/olist_erd.png" alt="">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="assets/img/comp_product_catregory.png" alt="">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="assets/img/scattwe_plots.png" alt="">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="assets/img/violin.png" alt="">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="assets/img/stationnary.png" alt="">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="assets/img/arima_forecast.png" alt="">
-            </div>
 
           </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-pagination"></div>
-        </div>
+          
 
           <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
             <div class="portfolio-info">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
               <h3>Project information</h3>
               <ul>
                 <li><strong>Data Analysis</strong> Data Analyst</li>
                 <li><strong>Client</strong> Olist</li>
-                <li><strong>Project date</strong> 01 March, 2020</li>
-                <li><strong>Challenge URL</strong> <a href="#">https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce</a></li>
-                <li><a href="#" class="btn-visit align-self-start">Visit Website</a></li>
+                <li><strong>Project date</strong> 01 March, 2025</li>
+                <li><strong>Challenge URL</strong> 
+                  <a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce" class="btn-visit align-self-start">Visit Website</a>
+                </li>
               </ul>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="image-gallery">
+              <a href="assets/img/olist_portfolio/olist_portfolio/olist_erd.png" class="glightbox" data-gallery="portfolio">
+                <img src="assets/img/olist_portfolio/olist_erd.png" alt="ERD diagram thumbnail">
+              </a>
+              <a href="assets/img/olist_portfolio/comp_product_catregory.png" class="glightbox" data-gallery="portfolio">
+                <img src="assets/img/olist_portfolio/comp_product_catregory.png" alt="Product category comparison">
+              </a>
+              <a href="assets/img/olist_portfolio/cust_states.png" class="glightbox" data-gallery="portfolio">
+                <img src="assets/img/olist_portfolio/cust_states.png" alt="Order States comparison">
+              </a>
+              <a href="assets/img/olist_portfolio/scattwe_plots.png" class="glightbox" data-gallery="portfolio">
+                <img src="assets/img/olist_portfolio/scattwe_plots.png" alt="Scatter plots">
+              </a>
+              <a href="assets/img/olist_portfolio/violin.png" class="glightbox" data-gallery="portfolio">
+                <img src="assets/img/olist_portfolio/violin.png" alt="Violin plot">
+              </a>
+              <a href="assets/img/olist_portfolio/score_states.png" class="glightbox" data-gallery="portfolio">
+                <img src="assets/img/olist_portfolio/score_states.png" alt="Stationarity plot">
+              </a>
+              <a href="assets/img/olist_portfolio/season_decomp.png" class="glightbox" data-gallery="portfolio">
+                <img src="assets/img/olist_portfolio/season_decomp.png" alt="Seasonality decomposition plots">
+              </a>
+              <a href="assets/img/olist_portfolio/ACF_PACF.png" class="glightbox" data-gallery="portfolio">
+                <img src="assets/img/olist_portfolio/ACF_PACF.png" alt="ACF_PACF">
+              </a>              
+              <a href="assets/img/olist_portfolio/stationnary.png" class="glightbox" data-gallery="portfolio">
+                <img src="assets/img/olist_portfolio/stationnary.png" alt="Stationarity plot">
+              </a>
+              <a href="assets/img/olist_portfolio/arima_forecast.png" class="glightbox" data-gallery="portfolio">
+                <img src="assets/img/olist_portfolio/arima_forecast.png" alt="ARIMA forecast">
+              </a>
+              <a href="assets/img/olist_portfolio/MAE.png" class="glightbox" data-gallery="portfolio">
+                <img src="assets/img/olist_portfolio/MAE.png" alt="metrics">
+              </a>
             </div>
           </div>
 
         </div>
 
-      </div>
+
 
     </section><!-- /Portfolio Details Section -->
 
@@ -237,13 +298,9 @@
 
   <footer id="footer" class="footer position-relative light-background">
     <div class="container">
-      <h3 class="sitename">Brandon Johnson</h3>
-      <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
+      <h3 class="sitename">F. Romaric Berger</h3>
       <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-skype"></i></a>
+
         <a href=""><i class="bi bi-linkedin"></i></a>
       </div>
       <div class="container">

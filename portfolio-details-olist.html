@@ -137,72 +137,167 @@
               <section>
               <h2>EDA_ Exploratory Data Analysis</h2>
               <p>
-                Exploratory Data Analysis (EDA) is a crucial step in the data analysis process that involves examining and understanding the data you have before applying more formal modeling or hypothesis testing techniques. The primary goal of EDA is to uncover patterns, spot anomalies, test hypotheses, and check assumptions with the help of summary statistics and graphical representations.
+                Exploratory Data Analysis (EDA) is a crucial step in the data analysis process that involves examining and understanding the data you have before applying more formal modeling or hypothesis testing techniques.<br>
+                The primary goal of EDA is to uncover patterns, spot anomalies, test hypotheses, and check assumptions with the help of summary statistics and graphical representations.<br>
+                In this EDA, we are focusing on the relationship between incomes, products, customers location and review scores and delay.<br>
+                In addition, we are using Autoviz and Sweetviz to show two automated tools that display relationship between dataframes'columns.
+
               </p>
-              <a href="assets/pdf/Exploratory_Data_Analysis.pdf" download>Download EDA</a>
+              <a href="assets/pdf/Exploratory_Data_Analysis - Jupyter Notebook" download>Download Notebook</a>
               </section> 
               <section>
               <h2>Olist_Data Analysis Income, Costs and ARIMA forecast</h2>
+              <br>
+              <section>
+                <h5>Problem Statement</h5>
+                <p><strong>Goal:</strong> How can Olist improve its profitability?</p>
+                <ul>
+                  <li>Revenue: Sales fee (10%) + Seller subscription (80 BRL/month)</li>
+                  <li>Costs:
+                    <ul>
+                      <li>IT Costs: Scale with √sellers and √items sold</li>
+                      <li>Reputation Costs: Penalized by review scores ≤ 3</li>
+                    </ul>
+                  </li>
+                </ul>
+              </section>
+              <section>
+                <h5>Financial Assessment</h5>
+                <ul>
+                  <li><strong>Total Revenue:</strong> BRL 2,860,303.66</li>
+                  <li><strong>IT Costs:</strong> BRL 491,494.47</li>
+                  <li><strong>Reputation Costs:</strong> BRL 2,053,340.00</li>
+                  <li><strong>Profit:</strong> BRL 315,469.19</li>
+                </ul>
+              </section>
+              <section>
+                <h5>Hypothesis: Removing Bad Sellers</h5>
+                <p>What if we only keep sellers with average review score > 3?</p>
+                <ul>
+                  <li><strong>Good Sellers:</strong> 2,645 out of 3,095</li>
+                  <li><strong>New Revenue:</strong> BRL 2,735,287.43</li>
+                  <li><strong>IT Cost (smaller):</strong> BRL 478,223.96</li>
+                  <li><strong>Reputation Cost:</strong> 0</li>
+                  <li><strong>New Profit:</strong> BRL 2,257,063.47</li>
+                </ul>
+              </section>
+              <section>
+                <h5>Observations</h5>
+                <ul>
+                  <li>Most review costs come from 1- and 2-star reviews</li>
+                  <li>Reputation cost is ~72% of revenue — huge impact</li>
+                  <li>Profit drastically improves when bad sellers are excluded</li>
+                </ul>
+              </section>
+              <section>
+                <h5>Sales Forecast with ARIMA</h5>
+                <p>Used ARIMA and SARIMA to predict daily sales revenue.</p>
+                <ul>
+                  <li>Data: Jan 2017 to Aug 2018</li>
+                  <li><strong>Model Accuracy:</strong> ~90%</li>
+                  <li><strong>ARIMA MAPE:</strong> 10.14%</li>
+                  <li><strong>Forecast Error:</strong> ~1.67%</li>
+                </ul>
+              </section>
+              <section>
+                <h5>Forecast with SARIMA</h5>
+                <ul>
+                  <li>SARIMA (0,1,1)x(1,0,1,7)</li>
+                  <li><strong>MAPE:</strong> 10.06%</li>
+                  <li><strong>Forecast Error:</strong> ~5.06%</li>
+                </ul>
+              </section>
+              <section>
+                <h5>Conclusion</h5>
+                <p>
+                  Removing underperforming sellers dramatically increases profitability by eliminating reputation costs. ARIMA and SARIMA models both provide reliable 14-day forecasts to support operational planning.
+                </p>
+              </section>
 
-              <h5>1. Problem Statement</h5>
-              <p><strong>Goal:</strong> How can Olist improve its profitability?</p>
-              <ul>
-                <li>Revenue: Sales fee (10%) + Seller subscription (80 BRL/month)</li>
-                <li>Costs:
+
+              <a href="assets/pdf/Data Analysis Income, Costs and ARIMA forecast - Jupyter Notebook.pdf" download>Download Notebook</a>
+              </section> 
+
+              <section>
+                  <h2>Reviews Sentiment Analysis</h2>
+                  <br>
+                  <h5>Dataset Creation</h5>
+                  <p>The dataset was created by importing and merging multiple CSV files containing reviews and related information. The data was cleaned and preprocessed to prepare it for analysis.</p>
+                  <table>
+                      <tr>
+                          <th>Dataset</th>
+                          <th>Description</th>
+                      </tr>
+                      <tr>
+                          <td>olist_order_reviews_dataset.csv</td>
+                          <td>Contains review data including review scores and comments.</td>
+                      </tr>
+                      <tr>
+                          <td>olist_order_items_dataset.csv</td>
+                          <td>Contains order item data.</td>
+                      </tr>
+                      <tr>
+                          <td>olist_products_dataset.csv</td>
+                          <td>Contains product data.</td>
+                      </tr>
+                      <tr>
+                          <td>product_category_name_translation.csv</td>
+                          <td>Contains translations of product category names.</td>
+                      </tr>
+                  </table>
+              </section>
+
+              <section>
+                  <h5>Model Fine-Tuning</h5>
+                  <p>A dataset called Repro, containing product reviews in Brazilian Portuguese, was used to fine-tune the model. The data was prepared, tokenized, and a model was defined and trained.</p>
+                  <h6>Steps:</h6>
+                  <ol>
+                      <li>Load the dataset.</li>
+                      <li>Prepare the data by cleaning and encoding labels.</li>
+                      <li>Tokenize the text using a pre-trained tokenizer.</li>
+                      <li>Define and train the model.</li>
+                      <li>Evaluate the model and save it for later use.</li>
+                  </ol>
+              </section>
+
+              <section>
+                  <h5>Sentiment Analysis</h5>
+                  <p>The fine-tuned model was used to evaluate the sentiment of the reviews. The reviews were classified into different sentiment categories such as "POSITIVE FEELING," "NEGATIVE FEELING," "MIXED FEELING," and "NEUTRAL."</p>
+                  <p>Over 50% of the reviews were positive, while about 30% were negative. Around 10% of the reviews expressed mixed feelings.</p>
+              </section>
+
+              <section>
+                  <h5>Visualizations and Insights</h5>
+                  <p>Word clouds were generated to visualize the most frequent words in positive and negative reviews.</p>
+                  <h6>Positive Reviews:</h6>
+                  <p>Frequent words in positive reviews included "prazo" (deadline), "bom" (good), "recomendo" (I recommend), and "entrega" (delivery).</p>
+
+                  <h6>Negative Reviews:</h6>
+                  <p>Frequent words in negative reviews included "recebi" (received), "comprei" (bought), "entregue" (delivered), and "ainda" (still).</p>
+              </section>
+
+              <section>
+                  <h5>Verification of Intuitions</h5>
+                  <p>The analysis verified intuitions about the factors driving positive and negative reviews. Delivery delays and seller reactivity were key factors influencing review sentiments.</p>
+                  <h6>Positive Reviews:</h6>
                   <ul>
-                    <li>IT Costs: Scale with √sellers and √items sold</li>
-                    <li>Reputation Costs: Penalized by review scores ≤ 3</li>
+                      <li>Mostly under 10 days delivery delay.</li>
+                      <li>Nearly all under 1 day seller shipping reactivity.</li>
+                      <li>Mostly between 2-5 days seller review response reactivity.</li>
                   </ul>
-                </li>
-              </ul>
 
-              <h5>2. Financial Assessment</h5>
-              <ul>
-                <li><strong>Total Revenue:</strong> BRL 2,860,303.66</li>
-                <li><strong>IT Costs:</strong> BRL 491,494.47</li>
-                <li><strong>Reputation Costs:</strong> BRL 2,053,340.00</li>
-                <li><strong>Profit:</strong> BRL 315,469.19</li>
-              </ul>
+                  <h6>Negative Reviews:</h6>
+                  <ul>
+                      <li>Spread across 10-40+ days delivery delay.</li>
+                      <li>Still mostly under 1 day seller shipping reactivity.</li>
+                      <li>Still centered around 2-5 days seller review response reactivity.</li>
+                  </ul>
+              </section>
 
-              <h5>3. Hypothesis: Removing Bad Sellers</h5>
-              <p>What if we only keep sellers with average review score > 3?</p>
-              <ul>
-                <li><strong>Good Sellers:</strong> 2,645 out of 3,095</li>
-                <li><strong>New Revenue:</strong> BRL 2,735,287.43</li>
-                <li><strong>IT Cost (smaller):</strong> BRL 478,223.96</li>
-                <li><strong>Reputation Cost:</strong> 0</li>
-                <li><strong>New Profit:</strong> BRL 2,257,063.47</li>
-              </ul>
-
-              <h5>4. Observations</h5>
-              <ul>
-                <li>Most review costs come from 1- and 2-star reviews</li>
-                <li>Reputation cost is ~72% of revenue — huge impact</li>
-                <li>Profit drastically improves when bad sellers are excluded</li>
-              </ul>
-
-              <h5>5. Sales Forecast with ARIMA</h5>
-              <p>Used ARIMA and SARIMA to predict daily sales revenue.</p>
-              <ul>
-                <li>Data: Jan 2017 to Aug 2018</li>
-                <li><strong>Model Accuracy:</strong> ~90%</li>
-                <li><strong>ARIMA MAPE:</strong> 10.14%</li>
-                <li><strong>Forecast Error:</strong> ~1.67%</li>
-              </ul>
-
-              <h5>6. Forecast with SARIMA</h5>
-              <ul>
-                <li>SARIMA (0,1,1)x(1,0,1,7)</li>
-                <li><strong>MAPE:</strong> 10.06%</li>
-                <li><strong>Forecast Error:</strong> ~5.06%</li>
-              </ul>
-
-              <h5>7. Conclusion</h5>
-              <p>
-                Removing underperforming sellers dramatically increases profitability by eliminating reputation costs. ARIMA and SARIMA models both provide reliable 14-day forecasts to support operational planning.
-              </p>
-
-              <a href="assets/pdf/Exploratory_Data_Analysis.pdf" download>Download Notebook</a>
+              <section>
+                  <h5>Conclusion</h5>
+                  <p>The sentiment analysis revealed that positive reviews were largely driven by fast delivery and prompt seller action. Negative reviews, on the other hand, were influenced by delivery delays and issues with logistics partners, despite quick seller reactivity.</p>
+              <a href="assets/pdf/Reviews Sentiment Analysis - Jupyter Notebook.pdf" download>Download Notebook</a>
               </section> 
 
 
@@ -243,48 +338,89 @@
             <br>
             <br>
             <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
+
             <div class="image-gallery">
-              <a href="assets/img/olist_portfolio/olist_portfolio/olist_erd.png" class="glightbox" data-gallery="portfolio">
+              <section> 
+                <a href="assets/img/olist_portfolio/olist_portfolio/olist_erd.png" class="glightbox" data-gallery="portfolio">
                 <img src="assets/img/olist_portfolio/olist_erd.png" alt="ERD diagram thumbnail">
               </a>
-              <a href="assets/img/olist_portfolio/comp_product_catregory.png" class="glightbox" data-gallery="portfolio">
-                <img src="assets/img/olist_portfolio/comp_product_catregory.png" alt="Product category comparison">
-              </a>
-              <a href="assets/img/olist_portfolio/cust_states.png" class="glightbox" data-gallery="portfolio">
-                <img src="assets/img/olist_portfolio/cust_states.png" alt="Order States comparison">
-              </a>
-              <a href="assets/img/olist_portfolio/scattwe_plots.png" class="glightbox" data-gallery="portfolio">
-                <img src="assets/img/olist_portfolio/scattwe_plots.png" alt="Scatter plots">
-              </a>
-              <a href="assets/img/olist_portfolio/violin.png" class="glightbox" data-gallery="portfolio">
-                <img src="assets/img/olist_portfolio/violin.png" alt="Violin plot">
-              </a>
-              <a href="assets/img/olist_portfolio/score_states.png" class="glightbox" data-gallery="portfolio">
-                <img src="assets/img/olist_portfolio/score_states.png" alt="Stationarity plot">
-              </a>
-              <a href="assets/img/olist_portfolio/season_decomp.png" class="glightbox" data-gallery="portfolio">
-                <img src="assets/img/olist_portfolio/season_decomp.png" alt="Seasonality decomposition plots">
-              </a>
-              <a href="assets/img/olist_portfolio/ACF_PACF.png" class="glightbox" data-gallery="portfolio">
-                <img src="assets/img/olist_portfolio/ACF_PACF.png" alt="ACF_PACF">
-              </a>              
-              <a href="assets/img/olist_portfolio/stationnary.png" class="glightbox" data-gallery="portfolio">
-                <img src="assets/img/olist_portfolio/stationnary.png" alt="Stationarity plot">
-              </a>
-              <a href="assets/img/olist_portfolio/arima_forecast.png" class="glightbox" data-gallery="portfolio">
-                <img src="assets/img/olist_portfolio/arima_forecast.png" alt="ARIMA forecast">
-              </a>
-              <a href="assets/img/olist_portfolio/MAE.png" class="glightbox" data-gallery="portfolio">
-                <img src="assets/img/olist_portfolio/MAE.png" alt="metrics">
-              </a>
+              </section>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <section>
+                <p>EDA pictures</p>
+                <!-- EDA pictures-->
+                <a href="assets/img/olist_portfolio/comp_product_catregory.png" class="glightbox" data-gallery="portfolio">
+                  <img src="assets/img/olist_portfolio/comp_product_catregory.png" alt="Product category comparison">
+                </a>
+                <a href="assets/img/olist_portfolio/cust_states.png" class="glightbox" data-gallery="portfolio">
+                  <img src="assets/img/olist_portfolio/cust_states.png" alt="Order States comparison">
+                </a>
+                <a href="assets/img/olist_portfolio/scattwe_plots.png" class="glightbox" data-gallery="portfolio">
+                  <img src="assets/img/olist_portfolio/scattwe_plots.png" alt="Scatter plots">
+                </a>
+                <a href="assets/img/olist_portfolio/violin.png" class="glightbox" data-gallery="portfolio">
+                  <img src="assets/img/olist_portfolio/violin.png" alt="Violin plot">
+                </a>
+                <a href="assets/img/olist_portfolio/score_states.png" class="glightbox" data-gallery="portfolio">
+                  <img src="assets/img/olist_portfolio/score_states.png" alt="Stationarity plot">
+                </a>
+              </section>
+              <section>
+                <p>Data Analysis Income, Costs and ARIMA forecast pictures</p>
+                <!-- ARIMA pictures-->
+                <a href="assets/img/olist_portfolio/season_decomp.png" class="glightbox" data-gallery="portfolio">
+                  <img src="assets/img/olist_portfolio/season_decomp.png" alt="Seasonality decomposition plots">
+                </a>
+                <a href="assets/img/olist_portfolio/ACF_PACF.png" class="glightbox" data-gallery="portfolio">
+                  <img src="assets/img/olist_portfolio/ACF_PACF.png" alt="ACF_PACF">
+                </a>              
+                <a href="assets/img/olist_portfolio/stationnary.png" class="glightbox" data-gallery="portfolio">
+                  <img src="assets/img/olist_portfolio/stationnary.png" alt="Stationarity plot">
+                </a>
+                <a href="assets/img/olist_portfolio/arima_forecast.png" class="glightbox" data-gallery="portfolio">
+                  <img src="assets/img/olist_portfolio/arima_forecast.png" alt="ARIMA forecast">
+                </a>
+                <a href="assets/img/olist_portfolio/MAE.png" class="glightbox" data-gallery="portfolio">
+                  <img src="assets/img/olist_portfolio/MAE.png" alt="metrics">
+                </a>
+              </section>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <section>
+              <p>Reviews Sentiment Analysis pictures</p>
+              <!-- Sentiment pictures-->
+                <a href="assets/img/olist_portfolio/Feelings_distribution.png" class="glightbox" data-gallery="portfolio">
+                  <img src="assets/img/olist_portfolio/Feelings_distribution.png" alt="ACF_PACF">
+                </a>              
+                <a href="assets/img/olist_portfolio/positive_words_cloud.png" class="glightbox" data-gallery="portfolio">
+                  <img src="assets/img/olist_portfolio/positive_words_cloud.png" alt="Stationarity plot">
+                </a>
+                <a href="assets/img/olist_portfolio/negative_words_cloud.png" class="glightbox" data-gallery="portfolio">
+                  <img src="assets/img/olist_portfolio/negative_words_cloud.png" alt="ARIMA forecast">
+                </a>
+                <a href="assets/img/olist_portfolio/Obs_Analysis.png" class="glightbox" data-gallery="portfolio">
+                  <img src="assets/img/olist_portfolio/Obs_Analysis.png" alt="metrics">
+                </a>
+              </section>
             </div>
           </div>
 

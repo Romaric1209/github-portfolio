@@ -112,6 +112,7 @@
             <div class="swiper-slide">
               <img src="assets/img/gaidi_portfolio/real_pic.png" alt="">
             </div>
+            
 
             <!-- <div class="swiper-slide">
               <img src="assets/img/portfolio/books-1.jpg" alt="">
@@ -233,6 +234,23 @@
                 My next attempt was with Render, which offers a straightforward deployment process using a <code>render.yaml</code> file. While convenient, the platform proved unsuitable for applications involving machine learning models or neural networks — the app was slow to respond and prone to frequent crashes. 🐌💥<br><br>
                 Eventually, I found a more reliable and specialized solution in <strong>Hugging Face Spaces</strong>, which provides a great environment for hosting machine learning applications like <em>GAIDI</em>. 🚀✨
               </p>
+              <h1>Update (7/29/2025)</h1>
+              <h3>🎥 Video Prediction</h3>
+              <br>
+              <p>
+                For the video classification module of my GenAI detection system, I implemented a <strong>frame-based deepfake detector</strong> using the <strong>FaceForensics++</strong> dataset.<br><br> 
+                This approach focused on analyzing individual frames extracted from videos to detect subtle visual artifacts typical of AI-generated content. I used a CNN-based classifier trained in <strong>PyTorch</strong> to distinguish between real and AI-generated frames.
+              </p>
+
+              <p>
+                I deliberately chose <strong>PyTorch</strong> for this project instead of TensorFlow (used in my text and image classification pipelines) to gain hands-on experience with PyTorch and broaden my deep learning framework expertise.
+              </p>
+
+              <p>
+                In parallel, I began developing an <strong>audio-visual mismatch detection system</strong> (SyncNet-style) to identify lip-sync inconsistencies between video and audio tracks. This technique can highlight potential manipulations such as re-encoded, poorly edited, or altered content. <br><br>
+                However, I decided not to pursue it further since audio-visual desynchronization, while useful for video integrity analysis, does not reliably indicate whether the content is <strong>AI-generated</strong>.
+              </p>
+
             </div>
           </div>
 
